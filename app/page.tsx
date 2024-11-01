@@ -1,6 +1,28 @@
 "use client";
 
+import { useEffect, useState } from "react";
+
+interface Thing {
+  id: number;
+  thing: string;
+}
+
 export default function Home() {
+  const [things, setThings] = useState([]);
+  useEffect(() => {
+    fetchThings();
+  }, []);
+
+  const fetchThings = async () => {
+    try {
+      const res = await fetch("/api/thing");
+      const data = await res.json();
+      setThings(data.things);
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
   const submitThing = async (e: React.SyntheticEvent) => {
     e.preventDefault();
 
@@ -16,6 +38,7 @@ export default function Home() {
       console.error(error);
     }
   };
+
   return (
     <div className="flex justify-center items-center h-screen">
       <div>
@@ -33,6 +56,17 @@ export default function Home() {
             className="btn btn-primary max-w-xs"
           />
         </form>
+
+        <div className="mt-8">
+          <h2 className="text-xl font-bold mb-4">Things Done:</h2>
+          <ul className="list-disc pl-5">
+            {things.map((thing: Thing, index: number) => (
+              <li key={index} className="mb-2">
+                {thing.thing}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
     </div>
   );
