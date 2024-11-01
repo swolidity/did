@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-
+import Link from "next/link";
 interface Thing {
   id: number;
   thing: string;
@@ -62,7 +62,7 @@ export default function Home() {
           <ul className="list-disc pl-5">
             {things.map((thing: Thing, index: number) => (
               <li key={index} className="mb-2">
-                {thing.thing}
+                <Link href={`/thing/${thing.id}`}>{thing.thing}</Link>
               </li>
             ))}
           </ul>
