@@ -20,6 +20,9 @@ export default async function Thing({
     <div>
       <div>{thing[0].thing}</div>
       <div>{thing[0].createdAt.toLocaleString()}</div>
+      <form action={`/api/thing/${id}/delete`} method="DELETE">
+        <button type="submit">Delete</button>
+      </form>
     </div>
   );
 }
