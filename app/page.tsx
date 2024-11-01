@@ -34,6 +34,8 @@ export default function Home() {
         method: "POST",
         body: JSON.stringify({ thing }),
       });
+
+      fetchThings();
     } catch (error) {
       console.error(error);
     }
