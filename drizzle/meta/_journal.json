@@ -8,6 +8,13 @@
       "when": 1730420243947,
       "tag": "0000_cold_giant_girl",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1730443952008,
+      "tag": "0001_flimsy_arclight",
+      "breakpoints": true
     }
   ]
 }
