@@ -5,5 +5,10 @@ import { db } from "@/db/drizzle";
 
 export const { auth, handlers, signIn, signOut } = NextAuth({
   adapter: DrizzleAdapter(db),
-  providers: [Twitter],
+  providers: [
+    Twitter({
+      clientId: process.env.AUTH_TWITTER_ID,
+      clientSecret: process.env.AUTH_TWITTER_SECRET,
+    }),
+  ],
 });
